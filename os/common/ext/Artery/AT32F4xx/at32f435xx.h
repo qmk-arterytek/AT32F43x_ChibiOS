@@ -690,10 +690,10 @@ typedef struct
   __IO uint32_t BDCR;          /*!< RCC Backup domain control register,                          Address offset: 0x70 */
   __IO uint32_t CSR;           /*!< RCC clock control & status register,                         Address offset: 0x74 */
   uint32_t      RESERVED6[2];  /*!< Reserved, 0x78-0x7C                                                               */
-  __IO uint32_t SSCGR;         /*!< RCC spread spectrum clock generation register,               Address offset: 0x80 */
-  __IO uint32_t PLLI2SCFGR;    /*!< RCC PLLI2S configuration register,                           Address offset: 0x84 */
-  __IO uint32_t PLLSAICFGR;    /*!< RCC PLLSAI configuration register,                           Address offset: 0x88 */
-  __IO uint32_t DCKCFGR;       /*!< RCC Dedicated Clocks configuration register,                 Address offset: 0x8C */
+  uint32_t      RESERVED7[8];  /*!< Reserved, 0x80-0x9C                                                               */
+  __IO uint32_t MISC1;         /*!< Additional register 1                                        Address offset: 0xA0 */
+  __IO uint32_t MISC2;         /*!< Additional register 2                                        Address offset: 0xA4 */
+
 } RCC_TypeDef;
 
 /** 
@@ -10441,8 +10441,8 @@ typedef struct
 #define RCC_CR_HSIRDY_Msk                  (0x1U << RCC_CR_HSIRDY_Pos)         /*!< 0x00000002 */
 #define RCC_CR_HSIRDY                      RCC_CR_HSIRDY_Msk                   
 
-#define RCC_CR_HSITRIM_Pos                 (3U)                                
-#define RCC_CR_HSITRIM_Msk                 (0x1FU << RCC_CR_HSITRIM_Pos)       /*!< 0x000000F8 */
+#define RCC_CR_HSITRIM_Pos                 (2U)                                
+#define RCC_CR_HSITRIM_Msk                 (0x3FU << RCC_CR_HSITRIM_Pos)       /*!< 0x000000F8 */
 #define RCC_CR_HSITRIM                     RCC_CR_HSITRIM_Msk                  
 #define RCC_CR_HSITRIM_0                   (0x01U << RCC_CR_HSITRIM_Pos)       /*!< 0x00000008 */
 #define RCC_CR_HSITRIM_1                   (0x02U << RCC_CR_HSITRIM_Pos)       /*!< 0x00000010 */
@@ -10479,40 +10479,16 @@ typedef struct
 #define RCC_CR_PLLON                       RCC_CR_PLLON_Msk                    
 #define RCC_CR_PLLRDY_Pos                  (25U)                               
 #define RCC_CR_PLLRDY_Msk                  (0x1U << RCC_CR_PLLRDY_Pos)         /*!< 0x02000000 */
-#define RCC_CR_PLLRDY                      RCC_CR_PLLRDY_Msk                   
-/*
- * @brief Specific device feature definitions (not present on all devices in the STM32F4 serie)
- */
-#define RCC_PLLI2S_SUPPORT                                                     /*!< Support PLLI2S oscillator */
-
-#define RCC_CR_PLLI2SON_Pos                (26U)                               
-#define RCC_CR_PLLI2SON_Msk                (0x1U << RCC_CR_PLLI2SON_Pos)       /*!< 0x04000000 */
-#define RCC_CR_PLLI2SON                    RCC_CR_PLLI2SON_Msk                 
-#define RCC_CR_PLLI2SRDY_Pos               (27U)                               
-#define RCC_CR_PLLI2SRDY_Msk               (0x1U << RCC_CR_PLLI2SRDY_Pos)      /*!< 0x08000000 */
-#define RCC_CR_PLLI2SRDY                   RCC_CR_PLLI2SRDY_Msk                
-/*
- * @brief Specific device feature definitions (not present on all devices in the STM32F4 serie)
- */
-#define RCC_PLLSAI_SUPPORT                                                     /*!< Support PLLSAI oscillator */
-
-#define RCC_CR_PLLSAION_Pos                (28U)                               
-#define RCC_CR_PLLSAION_Msk                (0x1U << RCC_CR_PLLSAION_Pos)       /*!< 0x10000000 */
-#define RCC_CR_PLLSAION                    RCC_CR_PLLSAION_Msk                 
-#define RCC_CR_PLLSAIRDY_Pos               (29U)                               
-#define RCC_CR_PLLSAIRDY_Msk               (0x1U << RCC_CR_PLLSAIRDY_Pos)      /*!< 0x20000000 */
-#define RCC_CR_PLLSAIRDY                   RCC_CR_PLLSAIRDY_Msk                
+#define RCC_CR_PLLRDY                      RCC_CR_PLLRDY_Msk                      
 
 /********************  Bit definition for RCC_PLLCFGR register  ***************/
 #define RCC_PLLCFGR_PLLM_Pos               (0U)                                
-#define RCC_PLLCFGR_PLLM_Msk               (0x3FU << RCC_PLLCFGR_PLLM_Pos)     /*!< 0x0000003F */
+#define RCC_PLLCFGR_PLLM_Msk               (0xFU << RCC_PLLCFGR_PLLM_Pos)      /*!< 0x0000000F */
 #define RCC_PLLCFGR_PLLM                   RCC_PLLCFGR_PLLM_Msk                
 #define RCC_PLLCFGR_PLLM_0                 (0x01U << RCC_PLLCFGR_PLLM_Pos)     /*!< 0x00000001 */
 #define RCC_PLLCFGR_PLLM_1                 (0x02U << RCC_PLLCFGR_PLLM_Pos)     /*!< 0x00000002 */
 #define RCC_PLLCFGR_PLLM_2                 (0x04U << RCC_PLLCFGR_PLLM_Pos)     /*!< 0x00000004 */
 #define RCC_PLLCFGR_PLLM_3                 (0x08U << RCC_PLLCFGR_PLLM_Pos)     /*!< 0x00000008 */
-#define RCC_PLLCFGR_PLLM_4                 (0x10U << RCC_PLLCFGR_PLLM_Pos)     /*!< 0x00000010 */
-#define RCC_PLLCFGR_PLLM_5                 (0x20U << RCC_PLLCFGR_PLLM_Pos)     /*!< 0x00000020 */
 
 #define RCC_PLLCFGR_PLLN_Pos               (6U)                                
 #define RCC_PLLCFGR_PLLN_Msk               (0x1FFU << RCC_PLLCFGR_PLLN_Pos)    /*!< 0x00007FC0 */
@@ -10540,15 +10516,6 @@ typedef struct
 #define RCC_PLLCFGR_PLLSRC_HSE_Msk         (0x1U << RCC_PLLCFGR_PLLSRC_HSE_Pos) /*!< 0x00400000 */
 #define RCC_PLLCFGR_PLLSRC_HSE             RCC_PLLCFGR_PLLSRC_HSE_Msk          
 #define RCC_PLLCFGR_PLLSRC_HSI             0x00000000U                         
-
-#define RCC_PLLCFGR_PLLQ_Pos               (24U)                               
-#define RCC_PLLCFGR_PLLQ_Msk               (0xFU << RCC_PLLCFGR_PLLQ_Pos)      /*!< 0x0F000000 */
-#define RCC_PLLCFGR_PLLQ                   RCC_PLLCFGR_PLLQ_Msk                
-#define RCC_PLLCFGR_PLLQ_0                 (0x1U << RCC_PLLCFGR_PLLQ_Pos)      /*!< 0x01000000 */
-#define RCC_PLLCFGR_PLLQ_1                 (0x2U << RCC_PLLCFGR_PLLQ_Pos)      /*!< 0x02000000 */
-#define RCC_PLLCFGR_PLLQ_2                 (0x4U << RCC_PLLCFGR_PLLQ_Pos)      /*!< 0x04000000 */
-#define RCC_PLLCFGR_PLLQ_3                 (0x8U << RCC_PLLCFGR_PLLQ_Pos)      /*!< 0x08000000 */
-
 
 /********************  Bit definition for RCC_CFGR register  ******************/
 /*!< SW configuration */

@@ -207,8 +207,7 @@ void stm32_clock_init(void) {
 
 #if STM32_ACTIVATE_PLL
   /* PLL activation.*/
-  RCC->PLLCFGR = STM32_PLLQ | STM32_PLLSRC | STM32_PLLP | STM32_PLLN |
-                 STM32_PLLM;
+  RCC->PLLCFGR = STM32_PLLSRC | STM32_PLLP | STM32_PLLN | STM32_PLLM;
   RCC->CR |= RCC_CR_PLLON;
 
 /* Artery */
@@ -235,28 +234,6 @@ void stm32_clock_init(void) {
   while (!(RCC->CR & RCC_CR_PLLRDY))
     ;
 #endif /* STM32_ACTIVATE_PLL */
-
-#if STM32_ACTIVATE_PLLI2S
-  /* PLLI2S activation.*/
-  RCC->PLLI2SCFGR = STM32_PLLI2SR | STM32_PLLI2SN | STM32_PLLI2SP |
-                    STM32_PLLI2SSRC | STM32_PLLI2SQ | STM32_PLLI2SM;
-  RCC->CR |= RCC_CR_PLLI2SON;
-
-  /* Waiting for PLL lock.*/
-  while (!(RCC->CR & RCC_CR_PLLI2SRDY))
-    ;
-#endif /* STM32_ACTIVATE_PLLI2S */
-
-#if STM32_ACTIVATE_PLLSAI
-  /* PLLSAI activation.*/
-  RCC->PLLSAICFGR = STM32_PLLSAIR | STM32_PLLSAIN | STM32_PLLSAIP |
-                    STM32_PLLSAIQ | STM32_PLLSAIM;
-  RCC->CR |= RCC_CR_PLLSAION;
-
-  /* Waiting for PLL lock.*/
-  while (!(RCC->CR & RCC_CR_PLLSAIRDY))
-    ;
-#endif /* STM32_ACTIVATE_PLLSAI */
 
   /* Other clock-related settings (dividers, MCO etc).*/
 #if !defined(STM32F413xx)
