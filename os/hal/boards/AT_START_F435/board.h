@@ -400,7 +400,7 @@
                                      PIN_MODE_INPUT(GPIOA_ARD_D12) |        \
                                      PIN_MODE_ALTERNATE(GPIOA_ARD_D11) |    \
                                      PIN_MODE_ALTERNATE(GPIOA_USB_SOF) |    \
-                                     PIN_MODE_ANALOG(GPIOA_USART1_TX) |     \
+                                     PIN_MODE_ALTERNATE(GPIOA_USART1_TX) |  \
                                      PIN_MODE_ALTERNATE(GPIOA_USART1_RX) |  \
                                      PIN_MODE_ALTERNATE(GPIOA_USB_DM) |     \
                                      PIN_MODE_ALTERNATE(GPIOA_USB_DP) |     \
@@ -448,8 +448,8 @@
                                      PIN_PUPDR_PULLUP(GPIOA_ARD_D12) |      \
                                      PIN_PUPDR_PULLUP(GPIOA_ARD_D11) |      \
                                      PIN_PUPDR_FLOATING(GPIOA_USB_SOF) |    \
-                                     PIN_PUPDR_FLOATING(GPIOA_USART1_TX) |  \
-                                     PIN_PUPDR_FLOATING(GPIOA_USART1_RX) |  \
+                                     PIN_PUPDR_PULLUP(GPIOA_USART1_TX) |    \
+                                     PIN_PUPDR_PULLUP(GPIOA_USART1_RX) |    \
                                      PIN_PUPDR_FLOATING(GPIOA_USB_DM) |     \
                                      PIN_PUPDR_FLOATING(GPIOA_USB_DP) |     \
                                      PIN_PUPDR_FLOATING(GPIOA_SWDIO) |      \
