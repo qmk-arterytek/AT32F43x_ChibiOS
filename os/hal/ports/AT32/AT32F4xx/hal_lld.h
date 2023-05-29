@@ -27,11 +27,7 @@
 
 #include "at32_registry.h"
 
-#if defined(STM32F413xx)
-#include "hal_lld_type2.h"
-#else
 #include "hal_lld_type1.h"
-#endif
 
 /* Various helpers.*/
 #include "nvic.h"

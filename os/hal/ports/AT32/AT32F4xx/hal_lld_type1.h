@@ -56,65 +56,11 @@
  * @name    Platform identification macros
  * @{
  */
-#if defined(STM32F205xx) || defined(__DOXYGEN__)
-#define PLATFORM_NAME           "STM32F205 High Performance"
-
-#elif defined(STM32F207xx)
-#define PLATFORM_NAME           "STM32F207 High Performance"
-
-#elif defined(STM32F215xx)
-#define PLATFORM_NAME           "STM32F215 High Performance"
-
-#elif defined(STM32F217xx)
-#define PLATFORM_NAME           "STM32F217 High Performance"
-
-#elif defined(STM32F401xx)
-#define PLATFORM_NAME           "STM32F401 High Performance with DSP and FPU"
-
-#elif defined(STM32F405xx)
-#define PLATFORM_NAME           "STM32F405 High Performance with DSP and FPU"
-
-#elif defined(STM32F407xx)
-#define PLATFORM_NAME           "STM32F407 High Performance with DSP and FPU"
-
-#elif defined(STM32F410xx)
-#define PLATFORM_NAME           "STM32F410 High Performance with DSP and FPU"
-
-#elif defined(STM32F411xx)
-#define PLATFORM_NAME           "STM32F411 High Performance with DSP and FPU"
-
-#elif defined(STM32F412xx)
-#define PLATFORM_NAME           "STM32F412 High Performance with DSP and FPU"
-
-#elif defined(STM32F415xx)
-#define PLATFORM_NAME           "STM32F415 High Performance with DSP and FPU"
-
-#elif defined(STM32F417xx)
-#define PLATFORM_NAME           "STM32F417 High Performance with DSP and FPU"
-
-#elif defined(STM32F427xx)
-#define PLATFORM_NAME           "STM32F427 High Performance with DSP and FPU"
-
-#elif defined(STM32F429xx)
-#define PLATFORM_NAME           "STM32F429 High Performance with DSP and FPU"
-
-#elif defined(STM32F437xx)
-#define PLATFORM_NAME           "STM32F437 High Performance with DSP and FPU"
-
-#elif defined(STM32F439xx)
-#define PLATFORM_NAME           "STM32F439 High Performance with DSP and FPU"
-
-#elif defined(STM32F446xx)
-#define PLATFORM_NAME           "STM32F446 High Performance with DSP and FPU"
-
-#elif defined(STM32F469xx)
-#define PLATFORM_NAME           "STM32F469 High Performance with DSP and FPU"
-
-#elif defined(STM32F479xx)
-#define PLATFORM_NAME           "STM32F479 High Performance with DSP and FPU"
+#if defined(AT32F435xx) || defined(AT32F437xx)
+#define PLATFORM_NAME           "AT32F435/437 High Performance with DSP, FPU and MPU"
 
 #else
-#error "STM32F2xx/F4xx device not specified"
+#error "AT32FF4xx device not specified"
 #endif
 /** @} */
 
@@ -122,9 +68,7 @@
  * @name    Absolute Maximum Ratings
  * @{
  */
-#if defined(STM32F427xx) || defined(STM32F437xx) ||                         \
-    defined(STM32F429xx) || defined(STM32F439xx) ||                         \
-    defined(STM32F469xx) || defined(STM32F479xx) || defined(__DOXYGEN__)
+#if defined(AT32F435xx) || defined(AT32F437xx) || defined(__DOXYGEN__)
 /**
  * @brief   Absolute maximum system clock.
  */
@@ -219,109 +163,6 @@
  * @brief   Maximum SPI/I2S clock frequency.
  */
 #define STM32_SPII2S_MAX        45000000
-#endif
-
-#if defined(STM32F40_41xxx)
-#define STM32_SYSCLK_MAX        168000000
-#define STM32_HSECLK_MAX        26000000
-#define STM32_HSECLK_BYP_MAX    50000000
-#define STM32_HSECLK_MIN        4000000
-#define STM32_HSECLK_BYP_MIN    1000000
-#define STM32_LSECLK_MAX        32768
-#define STM32_LSECLK_BYP_MAX    1000000
-#define STM32_LSECLK_MIN        32768
-#define STM32_PLLIN_MAX         2100000
-#define STM32_PLLIN_MIN         950000
-#define STM32_PLLVCO_MAX        432000000
-#define STM32_PLLVCO_MIN        192000000
-#define STM32_PLLOUT_MAX        168000000
-#define STM32_PLLOUT_MIN        24000000
-#define STM32_PCLK1_MAX         42000000
-#define STM32_PCLK2_MAX         84000000
-#define STM32_SPII2S_MAX        42000000
-#endif
-
-#if defined(STM32F401xx)
-#define STM32_SYSCLK_MAX        84000000
-#define STM32_HSECLK_MAX        26000000
-#define STM32_HSECLK_BYP_MAX    50000000
-#define STM32_HSECLK_MIN        4000000
-#define STM32_HSECLK_BYP_MIN    1000000
-#define STM32_LSECLK_MAX        32768
-#define STM32_LSECLK_BYP_MAX    1000000
-#define STM32_LSECLK_MIN        32768
-#define STM32_PLLIN_MAX         2100000
-#define STM32_PLLIN_MIN         950000
-#define STM32_PLLVCO_MAX        432000000
-#define STM32_PLLVCO_MIN        192000000
-#define STM32_PLLOUT_MAX        84000000
-#define STM32_PLLOUT_MIN        24000000
-#define STM32_PCLK1_MAX         42000000
-#define STM32_PCLK2_MAX         84000000
-#define STM32_SPII2S_MAX        42000000
-#endif
-
-#if defined(STM32F410xx) || defined(STM32F411xx) ||                         \
-    defined(STM32F412xx)
-#define STM32_SYSCLK_MAX        100000000
-#define STM32_HSECLK_MAX        26000000
-#define STM32_HSECLK_BYP_MAX    50000000
-#define STM32_HSECLK_MIN        4000000
-#define STM32_HSECLK_BYP_MIN    1000000
-#define STM32_LSECLK_MAX        32768
-#define STM32_LSECLK_BYP_MAX    1000000
-#define STM32_LSECLK_MIN        32768
-#define STM32_PLLIN_MAX         2100000
-#define STM32_PLLIN_MIN         950000
-#define STM32_PLLVCO_MAX        432000000
-#define STM32_PLLVCO_MIN        100000000
-#define STM32_PLLOUT_MAX        100000000
-#define STM32_PLLOUT_MIN        24000000
-#define STM32_PCLK1_MAX         50000000
-#define STM32_PCLK2_MAX         100000000
-#define STM32_SPII2S_MAX        50000000
-#endif
-
-#if defined(STM32F446xx)
-#define STM32_SYSCLK_MAX        180000000
-#define STM32_HSECLK_MAX        26000000
-#define STM32_HSECLK_BYP_MAX    50000000
-#define STM32_HSECLK_MIN        4000000
-#define STM32_HSECLK_BYP_MIN    1000000
-#define STM32_LSECLK_MAX        32768
-#define STM32_LSECLK_BYP_MAX    1000000
-#define STM32_LSECLK_MIN        32768
-#define STM32_PLLIN_MAX         2100000
-#define STM32_PLLIN_MIN         950000
-#define STM32_PLLVCO_MAX        432000000
-#define STM32_PLLVCO_MIN        100000000
-#define STM32_PLLOUT_MAX        180000000
-#define STM32_PLLOUT_MIN        12500000
-#define STM32_PLLI2SOUT_MAX     216000000
-#define STM32_PLLSAIOUT_MAX     216000000
-#define STM32_PCLK1_MAX         (STM32_PLLOUT_MAX / 4)
-#define STM32_PCLK2_MAX         (STM32_PLLOUT_MAX / 2)
-#define STM32_SPII2S_MAX        45000000
-#endif
-
-#if defined(STM32F2XX)
-#define STM32_SYSCLK_MAX        120000000
-#define STM32_HSECLK_MAX        26000000
-#define STM32_HSECLK_BYP_MAX    26000000
-#define STM32_HSECLK_MIN        1000000
-#define STM32_HSECLK_BYP_MIN    1000000
-#define STM32_LSECLK_MAX        32768
-#define STM32_LSECLK_BYP_MAX    1000000
-#define STM32_LSECLK_MIN        32768
-#define STM32_PLLIN_MAX         2000000
-#define STM32_PLLIN_MIN         950000
-#define STM32_PLLVCO_MAX        432000000
-#define STM32_PLLVCO_MIN        192000000
-#define STM32_PLLOUT_MAX        120000000
-#define STM32_PLLOUT_MIN        24000000
-#define STM32_PCLK1_MAX         30000000
-#define STM32_PCLK2_MAX         60000000
-#define STM32_SPII2S_MAX        30000000
 #endif
 /** @} */
 
