@@ -66,7 +66,7 @@
  * IO pins assignments.
  */
 /* TODO: */
-#define GPIOA_ZIO_D32               0U
+#define GPIOA_BUTTON                0U
 #define GPIOA_TIM2_CH1              0U
 #define GPIOA_RMII_REF_CLK          1U
 #define GPIOA_RMII_MDIO             2U
@@ -83,8 +83,8 @@
 #define GPIOA_ZIO_D71               7U
 #define GPIOA_RMII_RX_DV            7U
 #define GPIOA_USB_SOF               8U
-#define GPIOA_USB_VBUS              9U
-#define GPIOA_USB_ID                10U
+#define GPIOA_USART1_TX             9U
+#define GPIOA_USART1_RX             10U
 #define GPIOA_USB_DM                11U
 #define GPIOA_USB_DP                12U
 #define GPIOA_SWDIO                 13U
@@ -391,7 +391,7 @@
  * PA14 - SWCLK                     (alternate 0).
  * PA15 - ZIO_D20 I2S3_WS           (input pullup).
  */
-#define VAL_GPIOA_MODER             (PIN_MODE_INPUT(GPIOA_ZIO_D32) |        \
+#define VAL_GPIOA_MODER             (PIN_MODE_INPUT(GPIOA_BUTTON) |         \
                                      PIN_MODE_ALTERNATE(GPIOA_RMII_REF_CLK) |\
                                      PIN_MODE_ALTERNATE(GPIOA_RMII_MDIO) |  \
                                      PIN_MODE_INPUT(GPIOA_ARD_A0) |         \
@@ -400,14 +400,14 @@
                                      PIN_MODE_INPUT(GPIOA_ARD_D12) |        \
                                      PIN_MODE_ALTERNATE(GPIOA_ARD_D11) |    \
                                      PIN_MODE_ALTERNATE(GPIOA_USB_SOF) |    \
-                                     PIN_MODE_ANALOG(GPIOA_USB_VBUS) |      \
-                                     PIN_MODE_ALTERNATE(GPIOA_USB_ID) |     \
+                                     PIN_MODE_ANALOG(GPIOA_USART1_TX) |     \
+                                     PIN_MODE_ALTERNATE(GPIOA_USART1_RX) |  \
                                      PIN_MODE_ALTERNATE(GPIOA_USB_DM) |     \
                                      PIN_MODE_ALTERNATE(GPIOA_USB_DP) |     \
                                      PIN_MODE_ALTERNATE(GPIOA_SWDIO) |      \
                                      PIN_MODE_ALTERNATE(GPIOA_SWCLK) |      \
                                      PIN_MODE_INPUT(GPIOA_ZIO_D20))
-#define VAL_GPIOA_OTYPER            (PIN_OTYPE_PUSHPULL(GPIOA_ZIO_D32) |    \
+#define VAL_GPIOA_OTYPER            (PIN_OTYPE_PUSHPULL(GPIOA_BUTTON) |     \
                                      PIN_OTYPE_PUSHPULL(GPIOA_RMII_REF_CLK) |\
                                      PIN_OTYPE_PUSHPULL(GPIOA_RMII_MDIO) |  \
                                      PIN_OTYPE_PUSHPULL(GPIOA_ARD_A0) |     \
@@ -416,14 +416,14 @@
                                      PIN_OTYPE_PUSHPULL(GPIOA_ARD_D12) |    \
                                      PIN_OTYPE_PUSHPULL(GPIOA_ARD_D11) |    \
                                      PIN_OTYPE_PUSHPULL(GPIOA_USB_SOF) |    \
-                                     PIN_OTYPE_PUSHPULL(GPIOA_USB_VBUS) |   \
-                                     PIN_OTYPE_PUSHPULL(GPIOA_USB_ID) |     \
+                                     PIN_OTYPE_PUSHPULL(GPIOA_USART1_TX) |  \
+                                     PIN_OTYPE_PUSHPULL(GPIOA_USART1_RX) |  \
                                      PIN_OTYPE_PUSHPULL(GPIOA_USB_DM) |     \
                                      PIN_OTYPE_PUSHPULL(GPIOA_USB_DP) |     \
                                      PIN_OTYPE_PUSHPULL(GPIOA_SWDIO) |      \
                                      PIN_OTYPE_PUSHPULL(GPIOA_SWCLK) |      \
                                      PIN_OTYPE_PUSHPULL(GPIOA_ZIO_D20))
-#define VAL_GPIOA_OSPEEDR           (PIN_OSPEED_HIGH(GPIOA_ZIO_D32) |       \
+#define VAL_GPIOA_OSPEEDR           (PIN_OSPEED_HIGH(GPIOA_BUTTON) |        \
                                      PIN_OSPEED_HIGH(GPIOA_RMII_REF_CLK) |  \
                                      PIN_OSPEED_HIGH(GPIOA_RMII_MDIO) |     \
                                      PIN_OSPEED_HIGH(GPIOA_ARD_A0) |        \
@@ -432,14 +432,14 @@
                                      PIN_OSPEED_HIGH(GPIOA_ARD_D12) |       \
                                      PIN_OSPEED_HIGH(GPIOA_ARD_D11) |       \
                                      PIN_OSPEED_HIGH(GPIOA_USB_SOF) |       \
-                                     PIN_OSPEED_HIGH(GPIOA_USB_VBUS) |      \
-                                     PIN_OSPEED_HIGH(GPIOA_USB_ID) |        \
+                                     PIN_OSPEED_HIGH(GPIOA_USART1_TX) |     \
+                                     PIN_OSPEED_HIGH(GPIOA_USART1_RX) |     \
                                      PIN_OSPEED_HIGH(GPIOA_USB_DM) |        \
                                      PIN_OSPEED_HIGH(GPIOA_USB_DP) |        \
                                      PIN_OSPEED_HIGH(GPIOA_SWDIO) |         \
                                      PIN_OSPEED_HIGH(GPIOA_SWCLK) |         \
                                      PIN_OSPEED_HIGH(GPIOA_ZIO_D20))
-#define VAL_GPIOA_PUPDR             (PIN_PUPDR_PULLUP(GPIOA_ZIO_D32) |      \
+#define VAL_GPIOA_PUPDR             (PIN_PUPDR_FLOATING(GPIOA_BUTTON) |     \
                                      PIN_PUPDR_FLOATING(GPIOA_RMII_REF_CLK) |\
                                      PIN_PUPDR_PULLUP(GPIOA_RMII_MDIO) |    \
                                      PIN_PUPDR_PULLUP(GPIOA_ARD_A0) |       \
@@ -448,14 +448,14 @@
                                      PIN_PUPDR_PULLUP(GPIOA_ARD_D12) |      \
                                      PIN_PUPDR_PULLUP(GPIOA_ARD_D11) |      \
                                      PIN_PUPDR_FLOATING(GPIOA_USB_SOF) |    \
-                                     PIN_PUPDR_FLOATING(GPIOA_USB_VBUS) |   \
-                                     PIN_PUPDR_FLOATING(GPIOA_USB_ID) |     \
+                                     PIN_PUPDR_FLOATING(GPIOA_USART1_TX) |  \
+                                     PIN_PUPDR_FLOATING(GPIOA_USART1_RX) |  \
                                      PIN_PUPDR_FLOATING(GPIOA_USB_DM) |     \
                                      PIN_PUPDR_FLOATING(GPIOA_USB_DP) |     \
                                      PIN_PUPDR_FLOATING(GPIOA_SWDIO) |      \
                                      PIN_PUPDR_FLOATING(GPIOA_SWCLK) |      \
                                      PIN_PUPDR_PULLUP(GPIOA_ZIO_D20))
-#define VAL_GPIOA_ODR               (PIN_ODR_HIGH(GPIOA_ZIO_D32) |          \
+#define VAL_GPIOA_ODR               (PIN_ODR_HIGH(GPIOA_BUTTON) |           \
                                      PIN_ODR_HIGH(GPIOA_RMII_REF_CLK) |     \
                                      PIN_ODR_HIGH(GPIOA_RMII_MDIO) |        \
                                      PIN_ODR_HIGH(GPIOA_ARD_A0) |           \
@@ -464,14 +464,14 @@
                                      PIN_ODR_HIGH(GPIOA_ARD_D12) |          \
                                      PIN_ODR_HIGH(GPIOA_ARD_D11) |          \
                                      PIN_ODR_HIGH(GPIOA_USB_SOF) |          \
-                                     PIN_ODR_HIGH(GPIOA_USB_VBUS) |         \
-                                     PIN_ODR_HIGH(GPIOA_USB_ID) |           \
+                                     PIN_ODR_HIGH(GPIOA_USART1_TX) |        \
+                                     PIN_ODR_HIGH(GPIOA_USART1_RX) |        \
                                      PIN_ODR_HIGH(GPIOA_USB_DM) |           \
                                      PIN_ODR_HIGH(GPIOA_USB_DP) |           \
                                      PIN_ODR_HIGH(GPIOA_SWDIO) |            \
                                      PIN_ODR_HIGH(GPIOA_SWCLK) |            \
                                      PIN_ODR_HIGH(GPIOA_ZIO_D20))
-#define VAL_GPIOA_AFRL              (PIN_AFIO_AF(GPIOA_ZIO_D32, 0U) |       \
+#define VAL_GPIOA_AFRL              (PIN_AFIO_AF(GPIOA_BUTTON, 0U) |        \
                                      PIN_AFIO_AF(GPIOA_RMII_REF_CLK, 11U) | \
                                      PIN_AFIO_AF(GPIOA_RMII_MDIO, 11U) |    \
                                      PIN_AFIO_AF(GPIOA_ARD_A0, 0U) |        \
@@ -480,8 +480,8 @@
                                      PIN_AFIO_AF(GPIOA_ARD_D12, 0U) |       \
                                      PIN_AFIO_AF(GPIOA_ARD_D11, 11U))
 #define VAL_GPIOA_AFRH              (PIN_AFIO_AF(GPIOA_USB_SOF, 10U) |      \
-                                     PIN_AFIO_AF(GPIOA_USB_VBUS, 0U) |      \
-                                     PIN_AFIO_AF(GPIOA_USB_ID, 10U) |       \
+                                     PIN_AFIO_AF(GPIOA_USART1_TX, 7U) |     \
+                                     PIN_AFIO_AF(GPIOA_USART1_RX, 7U) |     \
                                      PIN_AFIO_AF(GPIOA_USB_DM, 10U) |       \
                                      PIN_AFIO_AF(GPIOA_USB_DP, 10U) |       \
                                      PIN_AFIO_AF(GPIOA_SWDIO, 0U) |         \
