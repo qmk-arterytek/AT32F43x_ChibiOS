@@ -35,6 +35,61 @@
 #define STM32F437_MCUCONF
 
 /*
+ * Config pll clock resource
+ * common frequency config list: pll source selected hick or hext (8mhz)
+ * _________________________________________________________________________________________________
+ * |        |         |         |         |         |         |         |         |        |        |
+ * |pll(mhz)|   288   |   252   |   216   |   192   |   180   |   144   |   108   |   72   |   36   |
+ * |________|_________|_________|_________|_________|_________|_________|_________|_________________|
+ * |        |         |         |         |         |         |         |         |        |        |
+ * |pll_ns  |   144   |   126   |   108   |   96    |   90    |   72    |   108   |   72   |   72   |
+ * |        |         |         |         |         |         |         |         |        |        |
+ * |pll_ms  |   1     |   1     |   1     |   1     |   1     |   1     |   1     |   1    |   1    |
+ * |        |         |         |         |         |         |         |         |        |        |
+ * |pll_fr  |   FR_4  |   FR_4  |   FR_4  |   FR_4  |   FR_4  |   FR_4  |   FR_8  |   FR_8 |   FR_16|
+ * |________|_________|_________|_________|_________|_________|_________|_________|________|________|
+ *
+ * if pll clock source selects hext with other frequency values, or configure pll to other
+ * frequency values, please use the at32 new clock  configuration tool for configuration.
+ */
+
+#if 0
+/* Defaults for 96MHz from DS */
+#define STM32_PLLM_VALUE                    2
+#define STM32_PLLN_VALUE                    192
+#define STM32_PLLP_VALUE                    8
+#define STM32_PPRE1                         STM32_PPRE1_DIV1    /* max 144 MHz */
+#define STM32_PPRE2                         STM32_PPRE2_DIV1    /* max 144 MHz */
+#endif
+
+#if 0
+/* 144 MHz */
+#define STM32_PLLM_VALUE                    1
+#define STM32_PLLN_VALUE                    72
+#define STM32_PLLP_VALUE                    4
+#define STM32_PPRE1                         STM32_PPRE1_DIV1    /* max 144 MHz */
+#define STM32_PPRE2                         STM32_PPRE2_DIV1    /* max 144 MHz */
+#endif
+
+#if 0
+/* 216 MHz */
+#define STM32_PLLM_VALUE                    1
+#define STM32_PLLN_VALUE                    108
+#define STM32_PLLP_VALUE                    4
+#define STM32_PPRE1                         STM32_PPRE1_DIV2    /* max 144 MHz */
+#define STM32_PPRE2                         STM32_PPRE2_DIV2    /* max 144 MHz */
+#endif
+
+#if 1
+/* 288 MHz */
+#define STM32_PLLM_VALUE                    1
+#define STM32_PLLN_VALUE                    144
+#define STM32_PLLP_VALUE                    4
+#define STM32_PPRE1                         STM32_PPRE1_DIV2    /* max 144 MHz */
+#define STM32_PPRE2                         STM32_PPRE2_DIV2    /* max 144 MHz */
+#endif
+
+/*
  * HAL driver system settings.
  */
 #define STM32_NO_INIT                       FALSE
@@ -48,21 +103,13 @@
 #define STM32_CLOCK48_REQUIRED              TRUE
 #define STM32_SW                            STM32_SW_PLL
 #define STM32_PLLSRC                        STM32_PLLSRC_HSE
-#define STM32_PLLM_VALUE                    2
-#define STM32_PLLN_VALUE                    192
-#define STM32_PLLP_VALUE                    8
 #define STM32_HPRE                          STM32_HPRE_DIV1
-#define STM32_PPRE1                         STM32_PPRE1_DIV4
-#define STM32_PPRE2                         STM32_PPRE2_DIV2
 #define STM32_RTCSEL                        STM32_RTCSEL_LSI
 #define STM32_RTCPRE_VALUE                  8
 #define STM32_MCO1SEL                       STM32_MCO1SEL_HSI
 #define STM32_MCO1PRE                       STM32_MCO1PRE_DIV1
 #define STM32_MCO2SEL                       STM32_MCO2SEL_SYSCLK
 #define STM32_MCO2PRE                       STM32_MCO2PRE_DIV5
-#define STM32_I2SSRC                        STM32_I2SSRC_CKIN
-#define STM32_PLLI2SN_VALUE                 192
-#define STM32_PLLI2SR_VALUE                 5
 
 /*
  * IRQ system settings.
