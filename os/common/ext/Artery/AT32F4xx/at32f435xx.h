@@ -11442,104 +11442,13 @@ typedef struct
 #define RCC_SSCGR_SPREADSEL                RCC_SSCGR_SPREADSEL_Msk             
 #define RCC_SSCGR_SSCGEN_Pos               (31U)                               
 #define RCC_SSCGR_SSCGEN_Msk               (0x1U << RCC_SSCGR_SSCGEN_Pos)      /*!< 0x80000000 */
-#define RCC_SSCGR_SSCGEN                   RCC_SSCGR_SSCGEN_Msk                
+#define RCC_SSCGR_SSCGEN                   RCC_SSCGR_SSCGEN_Msk                      
 
-/********************  Bit definition for RCC_PLLI2SCFGR register  ************/
-#define RCC_PLLI2SCFGR_PLLI2SN_Pos         (6U)                                
-#define RCC_PLLI2SCFGR_PLLI2SN_Msk         (0x1FFU << RCC_PLLI2SCFGR_PLLI2SN_Pos) /*!< 0x00007FC0 */
-#define RCC_PLLI2SCFGR_PLLI2SN             RCC_PLLI2SCFGR_PLLI2SN_Msk          
-#define RCC_PLLI2SCFGR_PLLI2SN_0           (0x001U << RCC_PLLI2SCFGR_PLLI2SN_Pos) /*!< 0x00000040 */
-#define RCC_PLLI2SCFGR_PLLI2SN_1           (0x002U << RCC_PLLI2SCFGR_PLLI2SN_Pos) /*!< 0x00000080 */
-#define RCC_PLLI2SCFGR_PLLI2SN_2           (0x004U << RCC_PLLI2SCFGR_PLLI2SN_Pos) /*!< 0x00000100 */
-#define RCC_PLLI2SCFGR_PLLI2SN_3           (0x008U << RCC_PLLI2SCFGR_PLLI2SN_Pos) /*!< 0x00000200 */
-#define RCC_PLLI2SCFGR_PLLI2SN_4           (0x010U << RCC_PLLI2SCFGR_PLLI2SN_Pos) /*!< 0x00000400 */
-#define RCC_PLLI2SCFGR_PLLI2SN_5           (0x020U << RCC_PLLI2SCFGR_PLLI2SN_Pos) /*!< 0x00000800 */
-#define RCC_PLLI2SCFGR_PLLI2SN_6           (0x040U << RCC_PLLI2SCFGR_PLLI2SN_Pos) /*!< 0x00001000 */
-#define RCC_PLLI2SCFGR_PLLI2SN_7           (0x080U << RCC_PLLI2SCFGR_PLLI2SN_Pos) /*!< 0x00002000 */
-#define RCC_PLLI2SCFGR_PLLI2SN_8           (0x100U << RCC_PLLI2SCFGR_PLLI2SN_Pos) /*!< 0x00004000 */
-
-#define RCC_PLLI2SCFGR_PLLI2SQ_Pos         (24U)                               
-#define RCC_PLLI2SCFGR_PLLI2SQ_Msk         (0xFU << RCC_PLLI2SCFGR_PLLI2SQ_Pos) /*!< 0x0F000000 */
-#define RCC_PLLI2SCFGR_PLLI2SQ             RCC_PLLI2SCFGR_PLLI2SQ_Msk          
-#define RCC_PLLI2SCFGR_PLLI2SQ_0           (0x1U << RCC_PLLI2SCFGR_PLLI2SQ_Pos) /*!< 0x01000000 */
-#define RCC_PLLI2SCFGR_PLLI2SQ_1           (0x2U << RCC_PLLI2SCFGR_PLLI2SQ_Pos) /*!< 0x02000000 */
-#define RCC_PLLI2SCFGR_PLLI2SQ_2           (0x4U << RCC_PLLI2SCFGR_PLLI2SQ_Pos) /*!< 0x04000000 */
-#define RCC_PLLI2SCFGR_PLLI2SQ_3           (0x8U << RCC_PLLI2SCFGR_PLLI2SQ_Pos) /*!< 0x08000000 */
-#define RCC_PLLI2SCFGR_PLLI2SR_Pos         (28U)                               
-#define RCC_PLLI2SCFGR_PLLI2SR_Msk         (0x7U << RCC_PLLI2SCFGR_PLLI2SR_Pos) /*!< 0x70000000 */
-#define RCC_PLLI2SCFGR_PLLI2SR             RCC_PLLI2SCFGR_PLLI2SR_Msk          
-#define RCC_PLLI2SCFGR_PLLI2SR_0           (0x1U << RCC_PLLI2SCFGR_PLLI2SR_Pos) /*!< 0x10000000 */
-#define RCC_PLLI2SCFGR_PLLI2SR_1           (0x2U << RCC_PLLI2SCFGR_PLLI2SR_Pos) /*!< 0x20000000 */
-#define RCC_PLLI2SCFGR_PLLI2SR_2           (0x4U << RCC_PLLI2SCFGR_PLLI2SR_Pos) /*!< 0x40000000 */
-
-/********************  Bit definition for RCC_PLLSAICFGR register  ************/
-#define RCC_PLLSAICFGR_PLLSAIN_Pos         (6U)                                
-#define RCC_PLLSAICFGR_PLLSAIN_Msk         (0x1FFU << RCC_PLLSAICFGR_PLLSAIN_Pos) /*!< 0x00007FC0 */
-#define RCC_PLLSAICFGR_PLLSAIN             RCC_PLLSAICFGR_PLLSAIN_Msk          
-#define RCC_PLLSAICFGR_PLLSAIN_0           (0x001U << RCC_PLLSAICFGR_PLLSAIN_Pos) /*!< 0x00000040 */
-#define RCC_PLLSAICFGR_PLLSAIN_1           (0x002U << RCC_PLLSAICFGR_PLLSAIN_Pos) /*!< 0x00000080 */
-#define RCC_PLLSAICFGR_PLLSAIN_2           (0x004U << RCC_PLLSAICFGR_PLLSAIN_Pos) /*!< 0x00000100 */
-#define RCC_PLLSAICFGR_PLLSAIN_3           (0x008U << RCC_PLLSAICFGR_PLLSAIN_Pos) /*!< 0x00000200 */
-#define RCC_PLLSAICFGR_PLLSAIN_4           (0x010U << RCC_PLLSAICFGR_PLLSAIN_Pos) /*!< 0x00000400 */
-#define RCC_PLLSAICFGR_PLLSAIN_5           (0x020U << RCC_PLLSAICFGR_PLLSAIN_Pos) /*!< 0x00000800 */
-#define RCC_PLLSAICFGR_PLLSAIN_6           (0x040U << RCC_PLLSAICFGR_PLLSAIN_Pos) /*!< 0x00001000 */
-#define RCC_PLLSAICFGR_PLLSAIN_7           (0x080U << RCC_PLLSAICFGR_PLLSAIN_Pos) /*!< 0x00002000 */
-#define RCC_PLLSAICFGR_PLLSAIN_8           (0x100U << RCC_PLLSAICFGR_PLLSAIN_Pos) /*!< 0x00004000 */
-
-
-#define RCC_PLLSAICFGR_PLLSAIQ_Pos         (24U)                               
-#define RCC_PLLSAICFGR_PLLSAIQ_Msk         (0xFU << RCC_PLLSAICFGR_PLLSAIQ_Pos) /*!< 0x0F000000 */
-#define RCC_PLLSAICFGR_PLLSAIQ             RCC_PLLSAICFGR_PLLSAIQ_Msk          
-#define RCC_PLLSAICFGR_PLLSAIQ_0           (0x1U << RCC_PLLSAICFGR_PLLSAIQ_Pos) /*!< 0x01000000 */
-#define RCC_PLLSAICFGR_PLLSAIQ_1           (0x2U << RCC_PLLSAICFGR_PLLSAIQ_Pos) /*!< 0x02000000 */
-#define RCC_PLLSAICFGR_PLLSAIQ_2           (0x4U << RCC_PLLSAICFGR_PLLSAIQ_Pos) /*!< 0x04000000 */
-#define RCC_PLLSAICFGR_PLLSAIQ_3           (0x8U << RCC_PLLSAICFGR_PLLSAIQ_Pos) /*!< 0x08000000 */
-
-#define RCC_PLLSAICFGR_PLLSAIR_Pos         (28U)                               
-#define RCC_PLLSAICFGR_PLLSAIR_Msk         (0x7U << RCC_PLLSAICFGR_PLLSAIR_Pos) /*!< 0x70000000 */
-#define RCC_PLLSAICFGR_PLLSAIR             RCC_PLLSAICFGR_PLLSAIR_Msk          
-#define RCC_PLLSAICFGR_PLLSAIR_0           (0x1U << RCC_PLLSAICFGR_PLLSAIR_Pos) /*!< 0x10000000 */
-#define RCC_PLLSAICFGR_PLLSAIR_1           (0x2U << RCC_PLLSAICFGR_PLLSAIR_Pos) /*!< 0x20000000 */
-#define RCC_PLLSAICFGR_PLLSAIR_2           (0x4U << RCC_PLLSAICFGR_PLLSAIR_Pos) /*!< 0x40000000 */
-
-/********************  Bit definition for RCC_DCKCFGR register  ***************/
-#define RCC_DCKCFGR_PLLI2SDIVQ_Pos        (0U)                                
-#define RCC_DCKCFGR_PLLI2SDIVQ_Msk        (0x1FU << RCC_DCKCFGR_PLLI2SDIVQ_Pos) /*!< 0x0000001F */
-#define RCC_DCKCFGR_PLLI2SDIVQ            RCC_DCKCFGR_PLLI2SDIVQ_Msk         
-#define RCC_DCKCFGR_PLLI2SDIVQ_0          (0x01U << RCC_DCKCFGR_PLLI2SDIVQ_Pos) /*!< 0x00000001 */
-#define RCC_DCKCFGR_PLLI2SDIVQ_1          (0x02U << RCC_DCKCFGR_PLLI2SDIVQ_Pos) /*!< 0x00000002 */
-#define RCC_DCKCFGR_PLLI2SDIVQ_2          (0x04U << RCC_DCKCFGR_PLLI2SDIVQ_Pos) /*!< 0x00000004 */
-#define RCC_DCKCFGR_PLLI2SDIVQ_3          (0x08U << RCC_DCKCFGR_PLLI2SDIVQ_Pos) /*!< 0x00000008 */
-#define RCC_DCKCFGR_PLLI2SDIVQ_4          (0x10U << RCC_DCKCFGR_PLLI2SDIVQ_Pos) /*!< 0x00000010 */
-                   
-#define RCC_DCKCFGR_PLLSAIDIVQ_Pos        (8U)                                
-#define RCC_DCKCFGR_PLLSAIDIVQ_Msk        (0x1FU << RCC_DCKCFGR_PLLSAIDIVQ_Pos) /*!< 0x00001F00 */
-#define RCC_DCKCFGR_PLLSAIDIVQ            RCC_DCKCFGR_PLLSAIDIVQ_Msk         
-#define RCC_DCKCFGR_PLLSAIDIVQ_0          (0x01U << RCC_DCKCFGR_PLLSAIDIVQ_Pos) /*!< 0x00000100 */
-#define RCC_DCKCFGR_PLLSAIDIVQ_1          (0x02U << RCC_DCKCFGR_PLLSAIDIVQ_Pos) /*!< 0x00000200 */
-#define RCC_DCKCFGR_PLLSAIDIVQ_2          (0x04U << RCC_DCKCFGR_PLLSAIDIVQ_Pos) /*!< 0x00000400 */
-#define RCC_DCKCFGR_PLLSAIDIVQ_3          (0x08U << RCC_DCKCFGR_PLLSAIDIVQ_Pos) /*!< 0x00000800 */
-#define RCC_DCKCFGR_PLLSAIDIVQ_4          (0x10U << RCC_DCKCFGR_PLLSAIDIVQ_Pos) /*!< 0x00001000 */
-#define RCC_DCKCFGR_PLLSAIDIVR_Pos        (16U)                               
-#define RCC_DCKCFGR_PLLSAIDIVR_Msk        (0x3U << RCC_DCKCFGR_PLLSAIDIVR_Pos) /*!< 0x00030000 */
-#define RCC_DCKCFGR_PLLSAIDIVR            RCC_DCKCFGR_PLLSAIDIVR_Msk         
-#define RCC_DCKCFGR_PLLSAIDIVR_0          (0x1U << RCC_DCKCFGR_PLLSAIDIVR_Pos) /*!< 0x00010000 */
-#define RCC_DCKCFGR_PLLSAIDIVR_1          (0x2U << RCC_DCKCFGR_PLLSAIDIVR_Pos) /*!< 0x00020000 */
-
-#define RCC_DCKCFGR_SAI1ASRC_Pos           (20U)                               
-#define RCC_DCKCFGR_SAI1ASRC_Msk           (0x3U << RCC_DCKCFGR_SAI1ASRC_Pos)  /*!< 0x00300000 */
-#define RCC_DCKCFGR_SAI1ASRC               RCC_DCKCFGR_SAI1ASRC_Msk            
-#define RCC_DCKCFGR_SAI1ASRC_0             (0x1U << RCC_DCKCFGR_SAI1ASRC_Pos)  /*!< 0x00100000 */
-#define RCC_DCKCFGR_SAI1ASRC_1             (0x2U << RCC_DCKCFGR_SAI1ASRC_Pos)  /*!< 0x00200000 */
-#define RCC_DCKCFGR_SAI1BSRC_Pos           (22U)                               
-#define RCC_DCKCFGR_SAI1BSRC_Msk           (0x3U << RCC_DCKCFGR_SAI1BSRC_Pos)  /*!< 0x00C00000 */
-#define RCC_DCKCFGR_SAI1BSRC               RCC_DCKCFGR_SAI1BSRC_Msk            
-#define RCC_DCKCFGR_SAI1BSRC_0             (0x1U << RCC_DCKCFGR_SAI1BSRC_Pos)  /*!< 0x00400000 */
-#define RCC_DCKCFGR_SAI1BSRC_1             (0x2U << RCC_DCKCFGR_SAI1BSRC_Pos)  /*!< 0x00800000 */
-#define RCC_DCKCFGR_TIMPRE_Pos             (24U)                               
-#define RCC_DCKCFGR_TIMPRE_Msk             (0x1U << RCC_DCKCFGR_TIMPRE_Pos)    /*!< 0x01000000 */
-#define RCC_DCKCFGR_TIMPRE                 RCC_DCKCFGR_TIMPRE_Msk              
-
+/********************  Bit definition for RCC_MISC2 register  *****************/
+#define RCC_MISC2_AUTO_STEP_EN_Pos         (4U)
+#define RCC_MISC2_AUTO_STEP_EN_Msk         (0x3U << RCC_MISC2_AUTO_STEP_EN_Pos)
+#define RCC_MISC2_AUTO_STEP_EN             RCC_MISC2_AUTO_STEP_EN_Msk
+#define RCC_MISC2_AUTO_STEP_DIS            (0x0)
 
 /******************************************************************************/
 /*                                                                            */
@@ -17019,8 +16928,6 @@ typedef struct
  * @brief Specific devices reset values definitions
  */
 #define RCC_PLLCFGR_RST_VALUE              0x24003010U
-#define RCC_PLLI2SCFGR_RST_VALUE           0x24003000U
-#define RCC_PLLSAICFGR_RST_VALUE           0x24003000U
 
 #define RCC_MAX_FREQUENCY           180000000U         /*!< Max frequency of family in Hz*/
 #define RCC_MAX_FREQUENCY_SCALE1    RCC_MAX_FREQUENCY  /*!< Maximum frequency for system clock at power scale1, in Hz */

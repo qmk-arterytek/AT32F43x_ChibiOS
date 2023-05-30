@@ -237,31 +237,6 @@
 #endif
 #endif /* STM32_HAS_RCC_DCKCFGR && (STM32_TIMPRE == STM32_TIMPRE_HCLK) */
 
-/**
- * @brief   Flash settings.
- */
-#if (STM32_HCLK <= STM32_0WS_THRESHOLD) || defined(__DOXYGEN__)
-#define STM32_FLASHBITS             0x00000000
-#elif STM32_HCLK <= STM32_1WS_THRESHOLD
-#define STM32_FLASHBITS             0x00000001
-#elif STM32_HCLK <= STM32_2WS_THRESHOLD
-#define STM32_FLASHBITS             0x00000002
-#elif STM32_HCLK <= STM32_3WS_THRESHOLD
-#define STM32_FLASHBITS             0x00000003
-#elif STM32_HCLK <= STM32_4WS_THRESHOLD
-#define STM32_FLASHBITS             0x00000004
-#elif STM32_HCLK <= STM32_5WS_THRESHOLD
-#define STM32_FLASHBITS             0x00000005
-#elif STM32_HCLK <= STM32_6WS_THRESHOLD
-#define STM32_FLASHBITS             0x00000006
-#elif STM32_HCLK <= STM32_7WS_THRESHOLD
-#define STM32_FLASHBITS             0x00000007
-#elif STM32_HCLK <= STM32_8WS_THRESHOLD
-#define STM32_FLASHBITS             0x00000008
-#else
-#error "invalid frequency at specified VDD level"
-#endif
-
 /*===========================================================================*/
 /* Driver data structures and types.                                         */
 /*===========================================================================*/

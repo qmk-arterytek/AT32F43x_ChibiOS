@@ -210,101 +210,35 @@ void stm32_clock_init(void) {
   RCC->PLLCFGR = STM32_PLLSRC | STM32_PLLP | STM32_PLLN | STM32_PLLM;
   RCC->CR |= RCC_CR_PLLON;
 
-/* Artery */
-#if 0
-  /* Synchronization with voltage regulator stabilization.*/
-#if defined(STM32F4XX)
-  while ((PWR->CSR & PWR_CSR_VOSRDY) == 0)
-    ;                           /* Waits until power regulator is stable.   */
-
-#if STM32_OVERDRIVE_REQUIRED
-  /* Overdrive activation performed after activating the PLL in order to save
-     time as recommended in RM in "Entering Over-drive mode" paragraph.*/
-  PWR->CR |= PWR_CR_ODEN;
-  while (!(PWR->CSR & PWR_CSR_ODRDY))
-      ;
-  PWR->CR |= PWR_CR_ODSWEN;
-  while (!(PWR->CSR & PWR_CSR_ODSWRDY))
-      ;
-#endif /* STM32_OVERDRIVE_REQUIRED */
-#endif /* defined(STM32F4XX) */
-#endif
-
   /* Waiting for PLL lock.*/
   while (!(RCC->CR & RCC_CR_PLLRDY))
     ;
 #endif /* STM32_ACTIVATE_PLL */
 
   /* Other clock-related settings (dividers, MCO etc).*/
-#if !defined(STM32F413xx)
-  RCC->CFGR = STM32_MCO2PRE | STM32_MCO2SEL | STM32_MCO1PRE | STM32_MCO1SEL |
-              STM32_I2SSRC | STM32_RTCPRE | STM32_PPRE2 | STM32_PPRE1 |
+  RCC->CFGR = STM32_MCO2PRE | STM32_MCO2SEL |
+              STM32_MCO1PRE | STM32_MCO1SEL |
+              STM32_RTCPRE |
+              STM32_PPRE2 | STM32_PPRE1 |
               STM32_HPRE;
-#else
-  RCC->CFGR = STM32_MCO2PRE | STM32_MCO2SEL | STM32_MCO1PRE | STM32_MCO1SEL |
-                              STM32_RTCPRE | STM32_PPRE2 | STM32_PPRE1 |
-              STM32_HPRE;
-#endif
-
-#if STM32_HAS_RCC_DCKCFGR
-  /* DCKCFGR register initialization, note, must take care of the _OFF
-   pseudo settings.*/
-  {
-    uint32_t dckcfgr = 0;
-#if STM32_SAI2SEL != STM32_SAI2SEL_OFF
-    dckcfgr |= STM32_SAI2SEL;
-#endif
-#if STM32_SAI1SEL != STM32_SAI1SEL_OFF
-    dckcfgr |= STM32_SAI1SEL;
-#endif
-#if (STM32_ACTIVATE_PLLSAI == TRUE) &&                                      \
-    (STM32_PLLSAIDIVR != STM32_PLLSAIDIVR_OFF)
-    dckcfgr |= STM32_PLLSAIDIVR;
-#endif
-#if defined(STM32F469xx) || defined(STM32F479xx)
-  /* Special case, in those devices STM32_CK48MSEL is located in the
-     DCKCFGR register.*/
-    dckcfgr |= STM32_CK48MSEL;
-#endif
-#if !defined(STM32F413xx)
-    RCC->DCKCFGR = dckcfgr |
-                   STM32_TIMPRE | STM32_PLLSAIDIVQ | STM32_PLLI2SDIVQ;
-#else
-    RCC->DCKCFGR = dckcfgr |
-                   STM32_TIMPRE | STM32_PLLDIVR | STM32_PLLI2SDIVR;
-#endif
-  }
-#endif
-
-#if STM32_HAS_RCC_DCKCFGR2
-  /* DCKCFGR2 register initialization.*/
-  RCC->DCKCFGR2 = STM32_CK48MSEL;
-#endif
 
 #if 0
   /* Flash setup.*/
-#if !defined(STM32_REMOVE_REVISION_A_FIX)
-  /* Some old revisions of F4x MCUs randomly crashes with compiler
-     optimizations enabled AND flash caches enabled. */
-  if ((DBGMCU->IDCODE == 0x20006411) && (SCB->CPUID == 0x410FC241))
-    FLASH->ACR = FLASH_ACR_PRFTEN | STM32_FLASHBITS;
-  else
-    FLASH->ACR = FLASH_ACR_PRFTEN | FLASH_ACR_ICEN |
-                 FLASH_ACR_DCEN | STM32_FLASHBITS;
-#else
-  FLASH->ACR = FLASH_ACR_PRFTEN | FLASH_ACR_ICEN |
-               FLASH_ACR_DCEN | STM32_FLASHBITS;
-#endif
-  while ((FLASH->ACR & FLASH_ACR_LATENCY_Msk) !=
-         (STM32_FLASHBITS & FLASH_ACR_LATENCY_Msk)) {
-  }
 #endif
 
   /* Switching to the configured clock source if it is different from HSI.*/
 #if (STM32_SW != STM32_SW_HSI)
+
+  /* enable auto step mode */
+  RCC->MISC2 |= RCC_MISC2_AUTO_STEP_EN;
+
   RCC->CFGR |= STM32_SW;        /* Switches on the selected clock source.   */
   while ((RCC->CFGR & RCC_CFGR_SWS) != (STM32_SW << 2))
     ;
+
+  /* disable auto step mode */
+  RCC->MISC2 &= ~RCC_MISC2_AUTO_STEP_EN;
+
 #endif
 #endif /* STM32_NO_INIT */
 

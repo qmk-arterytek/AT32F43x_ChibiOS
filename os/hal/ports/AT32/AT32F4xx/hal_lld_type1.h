@@ -140,29 +140,14 @@
 #define STM32_PLLOUT_MIN        16000000
 
 /**
- * @brief   Maximum PLLI2S output clock frequency.
- */
-#define STM32_PLLI2SOUT_MAX     216000000
-
-/**
- * @brief   Maximum PLLSAI output clock frequency.
- */
-#define STM32_PLLSAIOUT_MAX     216000000
-
-/**
  * @brief   Maximum APB1 clock frequency.
  */
-#define STM32_PCLK1_MAX         (STM32_PLLOUT_MAX / 4)
+#define STM32_PCLK1_MAX         144000000
 
 /**
  * @brief   Maximum APB2 clock frequency.
  */
-#define STM32_PCLK2_MAX         (STM32_PLLOUT_MAX / 2)
-
-/**
- * @brief   Maximum SPI/I2S clock frequency.
- */
-#define STM32_SPII2S_MAX        45000000
+#define STM32_PCLK2_MAX         144000000
 #endif
 /** @} */
 
@@ -247,10 +232,6 @@
 #define STM32_MCO1SEL_LSE       (1 << 21)   /**< LSE clock on MCO1 pin.     */
 #define STM32_MCO1SEL_HSE       (2 << 21)   /**< HSE clock on MCO1 pin.     */
 #define STM32_MCO1SEL_PLL       (3 << 21)   /**< PLL clock on MCO1 pin.     */
-
-#define STM32_I2SSRC_MASK       (1 << 23)   /**< I2CSRC mask.               */
-#define STM32_I2SSRC_PLLI2S     (0 << 23)   /**< I2SSRC is PLLI2S.          */
-#define STM32_I2SSRC_CKIN       (1 << 23)   /**< I2S_CKIN is PLLI2S.        */
 
 #define STM32_MCO1PRE_MASK      (7 << 24)   /**< MCO1PRE mask.              */
 #define STM32_MCO1PRE_DIV1      (0 << 24)   /**< MCO1 divided by 1.         */
@@ -675,7 +656,7 @@
  * @brief   APB1 prescaler value.
  */
 #if !defined(STM32_PPRE1) || defined(__DOXYGEN__)
-#define STM32_PPRE1                 STM32_PPRE1_DIV4
+#define STM32_PPRE1                 STM32_PPRE1_DIV2
 #endif
 
 /**
