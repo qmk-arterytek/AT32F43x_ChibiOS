@@ -358,10 +358,12 @@
 #define PIN_ODR_HIGH(n)             (1U << (n))
 #define PIN_OTYPE_PUSHPULL(n)       (0U << (n))
 #define PIN_OTYPE_OPENDRAIN(n)      (1U << (n))
+/* Normal */
 #define PIN_OSPEED_VERYLOW(n)       (0U << ((n) * 2U))
-#define PIN_OSPEED_LOW(n)           (1U << ((n) * 2U))
-#define PIN_OSPEED_MEDIUM(n)        (2U << ((n) * 2U))
-#define PIN_OSPEED_HIGH(n)          (3U << ((n) * 2U))
+/* Normal */
+#define PIN_OSPEED_MEDIUM(n)        (3U << ((n) * 2U))
+/* Large */
+#define PIN_OSPEED_HIGH(n)          (1U << ((n) * 2U))
 #define PIN_PUPDR_FLOATING(n)       (0U << ((n) * 2U))
 #define PIN_PUPDR_PULLUP(n)         (1U << ((n) * 2U))
 #define PIN_PUPDR_PULLDOWN(n)       (2U << ((n) * 2U))
