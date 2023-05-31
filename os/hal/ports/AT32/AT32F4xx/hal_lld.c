@@ -239,6 +239,11 @@ void stm32_clock_init(void) {
   /* disable auto step mode */
   RCC->MISC2 &= ~RCC_MISC2_AUTO_STEP_EN;
 
+#if STM32_CLOCK48_REQUIRED
+  RCC->MISC1 = (RCC->MISC1 & (~(STM32_CK48MSEL_MASK | RCC_MISC2_USB_DIV_Msk))) |
+               (STM32_CK48MSEL | STM32_USBDIV_VALUE);
+#endif
+
 #endif
 #endif /* STM32_NO_INIT */
 

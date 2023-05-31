@@ -337,19 +337,9 @@
  * @name    RCC_DCKCFGR2 register bits definitions
  * @{
  */
-#define STM32_I2C1SEL_MASK      (3 << 22)   /**< I2C1SEL mask.              */
-#define STM32_I2C1SEL_PCLK1     (0 << 22)   /**< I2C1 source is APB/PCLK1.  */
-#define STM32_I2C1SEL_SYSCLK    (1 << 22)   /**< I2C1 source is SYSCLK.     */
-#define STM32_I2C1SEL_HSI       (2 << 22)   /**< I2C1 source is HSI.        */
-
 #define STM32_CECSEL_MASK       (1 << 26)   /**< CECSEL mask.               */
 #define STM32_CECSEL_LSE        (0 << 26)   /**< CEC source is LSE.         */
 #define STM32_CECSEL_HSIDIV488  (1 << 26)   /**< CEC source is HSI/488.     */
-
-#define STM32_CK48MSEL_MASK     (1 << 27)   /**< CK48MSEL mask.             */
-#define STM32_CK48MSEL_PLL      (0 << 27)   /**< PLL48CLK source is PLL.    */
-#define STM32_CK48MSEL_PLLSAI   (1 << 27)   /**< PLL48CLK source is PLLSAI. */
-#define STM32_CK48MSEL_PLLALT   (1 << 27)   /**< Alias.                     */
 
 #define STM32_SDMMCSEL_MASK     (1 << 28)   /**< SDMMCSEL mask.             */
 #define STM32_SDMMCSEL_PLL48CLK (0 << 28)   /**< SDMMC source is PLL48CLK.  */
@@ -364,6 +354,16 @@
 #define STM32_LPTIM1SEL_HSI     (1 << 30)   /**< LPTIM1 source is HSI.      */
 #define STM32_LPTIM1SEL_LSI     (2 << 30)   /**< LPTIM1 source is LSI.      */
 #define STM32_LPTIM1SEL_LSE     (3 << 30)   /**< LPTIM1 source is LSE.      */
+/** @} */
+
+/**
+ * @name    RCC_MISC1 register bits definitions
+ * @{
+ */
+#define STM32_CK48MSEL_MASK     (1 << 13)   /**< CK48MSEL mask.             */
+#define STM32_CK48MSEL_PLL      (0 << 13)   /**< PLL48CLK source is PLL.    */
+#define STM32_CK48MSEL_HICK     (1 << 13)   /**< PLL48CLK source is HICK.   */
+#define STM32_CK48MSEL_PLLALT   (1 << 13)   /**< Alias.                     */
 /** @} */
 
 /*===========================================================================*/

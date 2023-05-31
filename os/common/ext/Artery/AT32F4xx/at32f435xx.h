@@ -11450,6 +11450,22 @@ typedef struct
 #define RCC_MISC2_AUTO_STEP_EN             RCC_MISC2_AUTO_STEP_EN_Msk
 #define RCC_MISC2_AUTO_STEP_DIS            (0x0)
 
+#define RCC_MISC2_USB_DIV_Pos              (12U)
+#define RCC_MISC2_USB_DIV_Msk              (0x0FU << RCC_MISC2_USB_DIV_Pos)
+#define RCC_MISC2_USB_DIV_1_5              (0x00U << RCC_MISC2_USB_DIV_Pos)     /*!< pllclk div1.5 to usbclk */
+#define RCC_MISC2_USB_DIV_1                (0x01U << RCC_MISC2_USB_DIV_Pos)     /*!< pllclk div1 to usbclk */
+#define RCC_MISC2_USB_DIV_2_5              (0x02U << RCC_MISC2_USB_DIV_Pos)     /*!< pllclk div2.5 to usbclk */
+#define RCC_MISC2_USB_DIV_2                (0x03U << RCC_MISC2_USB_DIV_Pos)     /*!< pllclk div2 to usbclk */
+#define RCC_MISC2_USB_DIV_3_5              (0x04U << RCC_MISC2_USB_DIV_Pos)     /*!< pllclk div3.5 to usbclk */
+#define RCC_MISC2_USB_DIV_3                (0x05U << RCC_MISC2_USB_DIV_Pos)     /*!< pllclk div3 to usbclk */
+#define RCC_MISC2_USB_DIV_4_5              (0x06U << RCC_MISC2_USB_DIV_Pos)     /*!< pllclk div4.5 to usbclk */
+#define RCC_MISC2_USB_DIV_4                (0x07U << RCC_MISC2_USB_DIV_Pos)     /*!< pllclk div4 to usbclk */
+#define RCC_MISC2_USB_DIV_5_5              (0x08U << RCC_MISC2_USB_DIV_Pos)     /*!< pllclk div5.5 to usbclk */
+#define RCC_MISC2_USB_DIV_5                (0x09U << RCC_MISC2_USB_DIV_Pos)     /*!< pllclk div5 to usbclk */
+#define RCC_MISC2_USB_DIV_6_5              (0x0AU << RCC_MISC2_USB_DIV_Pos)     /*!< pllclk div6.5 to usbclk */
+#define RCC_MISC2_USB_DIV_6                (0x0BU << RCC_MISC2_USB_DIV_Pos)     /*!< pllclk div6 to usbclk */
+#define RCC_MISC2_USB_DIV_7                (0x0CU << RCC_MISC2_USB_DIV_Pos)     /*!< pllclk div7 to usbclk */
+
 /******************************************************************************/
 /*                                                                            */
 /*                                    RNG                                     */
