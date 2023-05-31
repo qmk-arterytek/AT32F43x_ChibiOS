@@ -1,0 +1,26 @@
+name: Firmware at GHA
+
+on: [ push, pull_request ]
+
+jobs:
+  build-firmware:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+
+      # Build machines don't have arm-none-eabi gcc, so let's download it and put it on the path
+      - name: Download & Install GCC
+        if: ${{ env.skip != 'true' }}
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+        run: |
+          tools/provide_gcc.sh
+          echo "::add-path::`pwd`/gcc-arm-none-eabi/bin"
+
+      - name: 1. Compile
+        run: |
+          cd demos/STM32/RT-AT32F435-ARTERY144
+          make -j
