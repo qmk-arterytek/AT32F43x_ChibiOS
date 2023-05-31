@@ -722,14 +722,14 @@
  *
  * @api
  */
-#define rccEnableOTG_HSULPI(lp) rccEnableAHB1(RCC_AHB1ENR_OTGHSULPIEN, lp)
+#define rccEnableOTG_HSULPI(lp)
 
 /**
  * @brief   Disables the OTG_HS peripheral clock.
  *
  * @api
  */
-#define rccDisableOTG_HSULPI() rccDisableAHB1(RCC_AHB1ENR_OTGHSULPIEN)
+#define rccDisableOTG_HSULPI()
 /** @} */
 
 /**

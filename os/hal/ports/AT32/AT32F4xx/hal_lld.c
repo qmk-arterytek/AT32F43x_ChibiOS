@@ -161,11 +161,13 @@ void stm32_clock_init(void) {
   RCC->APB1ENR = RCC_APB1ENR_PWREN;
 #endif
 
-  /* PWR initialization.*/
-#if defined(STM32F4XX) || defined(__DOXYGEN__)
-  PWR->CR = STM32_VOS;
-#else
-  PWR->CR = 0;
+  /* config ldo voltage */
+  PWR->LDOOV = PWR_LDOOV_1V3;
+
+#if 0
+  /* Flash setup.*/
+  /* set the flash clock divider */
+  flash_clock_divider_set(FLASH_CLOCK_DIV_3);
 #endif
 
   /* HSI setup, it enforces the reset situation in order to handle possible
@@ -222,10 +224,6 @@ void stm32_clock_init(void) {
               STM32_PPRE2 | STM32_PPRE1 |
               STM32_HPRE;
 
-#if 0
-  /* Flash setup.*/
-#endif
-
   /* Switching to the configured clock source if it is different from HSI.*/
 #if (STM32_SW != STM32_SW_HSI)
 
@@ -238,13 +236,12 @@ void stm32_clock_init(void) {
 
   /* disable auto step mode */
   RCC->MISC2 &= ~RCC_MISC2_AUTO_STEP_EN;
+#endif
 
 #if STM32_CLOCK48_REQUIRED
-  RCC->MISC1 = (RCC->MISC1 & (~(STM32_CK48MSEL_MASK | RCC_MISC2_USB_DIV_Msk))) |
+  RCC->MISC2 = (RCC->MISC2 & (~(STM32_CK48MSEL_MASK | RCC_MISC2_USB_DIV_Msk))) |
                (STM32_CK48MSEL | STM32_USBDIV_VALUE);
-#endif
-
-#endif
+#endif /* STM32_CLOCK48_REQUIRED */
 #endif /* STM32_NO_INIT */
 
   /* SYSCFG clock enabled here because it is a multi-functional unit shared

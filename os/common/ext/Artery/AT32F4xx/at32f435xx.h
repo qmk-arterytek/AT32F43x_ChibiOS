@@ -600,6 +600,10 @@ typedef struct
   __IO uint32_t BSRR;     /*!< GPIO port bit set/reset register,      Address offset: 0x18      */
   __IO uint32_t LCKR;     /*!< GPIO port configuration lock register, Address offset: 0x1C      */
   __IO uint32_t AFR[2];   /*!< GPIO alternate function registers,     Address offset: 0x20-0x24 */
+  __IO uint32_t CLR;      /*!< GPIO port bit clear register,          Address offset: 0x2c      */
+  uint32_t      RESERVED[3];  /*!< Reserved, 0x30-0x38                                          */
+  __IO uint32_t HDRV;     /*!< GPIO huge current control register,    Address offset: 0x3c      */
+
 } GPIO_TypeDef;
 
 /** 
@@ -654,6 +658,7 @@ typedef struct
 {
   __IO uint32_t CR;   /*!< PWR power control register,        Address offset: 0x00 */
   __IO uint32_t CSR;  /*!< PWR power control/status register, Address offset: 0x04 */
+  __IO uint32_t LDOOV;/*!< LDO output voltage select register, Address offset: 0x08 */
 } PWR_TypeDef;
 
 /** 
@@ -1214,8 +1219,8 @@ typedef struct
 /*!< Debug MCU registers base address */
 #define DBGMCU_BASE           0xE0042000U
 /*!< USB registers base address */
-#define USB_OTG_HS_PERIPH_BASE               0x40040000U
-#define USB_OTG_FS_PERIPH_BASE               0x50000000U
+#define USB_OTG_FS2_PERIPH_BASE              0x40040000U
+#define USB_OTG_FS1_PERIPH_BASE              0x50000000U
 
 #define USB_OTG_GLOBAL_BASE                  0x000U
 #define USB_OTG_DEVICE_BASE                  0x800U
@@ -1338,8 +1343,8 @@ typedef struct
 #define FMC_Bank4           ((FMC_Bank4_TypeDef *) FMC_Bank4_R_BASE)
 #define FMC_Bank5_6         ((FMC_Bank5_6_TypeDef *) FMC_Bank5_6_R_BASE)
 #define DBGMCU              ((DBGMCU_TypeDef *) DBGMCU_BASE)
-#define USB_OTG_FS          ((USB_OTG_GlobalTypeDef *) USB_OTG_FS_PERIPH_BASE)
-#define USB_OTG_HS          ((USB_OTG_GlobalTypeDef *) USB_OTG_HS_PERIPH_BASE)
+#define USB_OTG_FS1         ((USB_OTG_GlobalTypeDef *) USB_OTG_FS1_PERIPH_BASE)
+#define USB_OTG_FS2         ((USB_OTG_GlobalTypeDef *) USB_OTG_FS2_PERIPH_BASE)
 
 /**
   * @}
@@ -10428,6 +10433,14 @@ typedef struct
 /* Legacy define */
 #define  PWR_CSR_REGRDY                      PWR_CSR_VOSRDY
 
+/*******************  Bit definition for PWR_LDOOV register  ******************/
+#define PWR_LDOOV_Pos          (0U)
+#define PWR_LDOOV_Msk          (0x7U << PWR_LDOOV_Pos)
+#define PWR_LDOOV_1V3          (0x1U << PWR_LDOOV_Pos)                         /*!< ldo output voltage is 1.3v */
+#define PWR_LDOOV_1V2          (0x0U << PWR_LDOOV_Pos)                         /*!< ldo output voltage is 1.2v */
+#define PWR_LDOOV_1V1          (0x4U << PWR_LDOOV_Pos)                         /*!< ldo output voltage is 1.1v */
+#define PWR_LDOOV_1V0          (0x5U << PWR_LDOOV_Pos)                         /*!< ldo output voltage is 1.0v */
+
 /******************************************************************************/
 /*                                                                            */
 /*                         Reset and Clock Control                            */
@@ -10491,7 +10504,7 @@ typedef struct
 #define RCC_PLLCFGR_PLLM_3                 (0x08U << RCC_PLLCFGR_PLLM_Pos)     /*!< 0x00000008 */
 
 #define RCC_PLLCFGR_PLLN_Pos               (6U)                                
-#define RCC_PLLCFGR_PLLN_Msk               (0x1FFU << RCC_PLLCFGR_PLLN_Pos)    /*!< 0x00007FC0 */
+#define RCC_PLLCFGR_PLLN_Msk               (0x3FFU << RCC_PLLCFGR_PLLN_Pos)    /*!< 0x00007FC0 */
 #define RCC_PLLCFGR_PLLN                   RCC_PLLCFGR_PLLN_Msk                
 #define RCC_PLLCFGR_PLLN_0                 (0x001U << RCC_PLLCFGR_PLLN_Pos)    /*!< 0x00000040 */
 #define RCC_PLLCFGR_PLLN_1                 (0x002U << RCC_PLLCFGR_PLLN_Pos)    /*!< 0x00000080 */
@@ -10502,12 +10515,15 @@ typedef struct
 #define RCC_PLLCFGR_PLLN_6                 (0x040U << RCC_PLLCFGR_PLLN_Pos)    /*!< 0x00001000 */
 #define RCC_PLLCFGR_PLLN_7                 (0x080U << RCC_PLLCFGR_PLLN_Pos)    /*!< 0x00002000 */
 #define RCC_PLLCFGR_PLLN_8                 (0x100U << RCC_PLLCFGR_PLLN_Pos)    /*!< 0x00004000 */
+#define RCC_PLLCFGR_PLLN_9                 (0x200U << RCC_PLLCFGR_PLLN_Pos)    /*!< 0x00008000 */
 
 #define RCC_PLLCFGR_PLLP_Pos               (16U)                               
-#define RCC_PLLCFGR_PLLP_Msk               (0x3U << RCC_PLLCFGR_PLLP_Pos)      /*!< 0x00030000 */
+#define RCC_PLLCFGR_PLLP_Msk               (0x7U << RCC_PLLCFGR_PLLP_Pos)      /*!< 0x00030000 */
 #define RCC_PLLCFGR_PLLP                   RCC_PLLCFGR_PLLP_Msk                
 #define RCC_PLLCFGR_PLLP_0                 (0x1U << RCC_PLLCFGR_PLLP_Pos)      /*!< 0x00010000 */
 #define RCC_PLLCFGR_PLLP_1                 (0x2U << RCC_PLLCFGR_PLLP_Pos)      /*!< 0x00020000 */
+#define RCC_PLLCFGR_PLLP_2                 (0x4U << RCC_PLLCFGR_PLLP_Pos)      /*!< 0x00040000 */
+
 
 #define RCC_PLLCFGR_PLLSRC_Pos             (22U)                               
 #define RCC_PLLCFGR_PLLSRC_Msk             (0x1U << RCC_PLLCFGR_PLLSRC_Pos)    /*!< 0x00400000 */
@@ -10972,10 +10988,7 @@ typedef struct
 #define RCC_AHB1ENR_ETHMACPTPEN            RCC_AHB1ENR_ETHMACPTPEN_Msk         
 #define RCC_AHB1ENR_OTGHSEN_Pos            (29U)                               
 #define RCC_AHB1ENR_OTGHSEN_Msk            (0x1U << RCC_AHB1ENR_OTGHSEN_Pos)   /*!< 0x20000000 */
-#define RCC_AHB1ENR_OTGHSEN                RCC_AHB1ENR_OTGHSEN_Msk             
-#define RCC_AHB1ENR_OTGHSULPIEN_Pos        (30U)                               
-#define RCC_AHB1ENR_OTGHSULPIEN_Msk        (0x1U << RCC_AHB1ENR_OTGHSULPIEN_Pos) /*!< 0x40000000 */
-#define RCC_AHB1ENR_OTGHSULPIEN            RCC_AHB1ENR_OTGHSULPIEN_Msk         
+#define RCC_AHB1ENR_OTGHSEN                RCC_AHB1ENR_OTGHSEN_Msk                 
 /********************  Bit definition for RCC_AHB2ENR register  ***************/
 /*
  * @brief Specific device feature definitions (not present on all devices in the STM32F4 serie)
@@ -16918,12 +16931,12 @@ typedef struct
                                     ((INSTANCE) == UART8))                                     
 
 /*********************** PCD Instances ****************************************/
-#define IS_PCD_ALL_INSTANCE(INSTANCE) (((INSTANCE) == USB_OTG_FS) || \
-                                       ((INSTANCE) == USB_OTG_HS))
+#define IS_PCD_ALL_INSTANCE(INSTANCE) (((INSTANCE) == USB_OTG_FS1) || \
+                                       ((INSTANCE) == USB_OTG_FS2))
 
 /*********************** HCD Instances ****************************************/
-#define IS_HCD_ALL_INSTANCE(INSTANCE) (((INSTANCE) == USB_OTG_FS) || \
-                                       ((INSTANCE) == USB_OTG_HS))
+#define IS_HCD_ALL_INSTANCE(INSTANCE) (((INSTANCE) == USB_OTG_FS1) || \
+                                       ((INSTANCE) == USB_OTG_FS2))
 
 /****************************** SDIO Instances ********************************/
 #define IS_SDIO_ALL_INSTANCE(INSTANCE) ((INSTANCE) == SDIO)
